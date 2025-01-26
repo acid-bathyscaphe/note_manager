@@ -1,5 +1,5 @@
 import unittest
-from note_manager.database import setup_database
+from ..database import setup_database
 
 class TestNoteDatabase(unittest.TestCase):
     def test_notes_database_functions(self):
