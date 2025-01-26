@@ -1,5 +1,5 @@
 import datetime
-from os import remove
+import sqlite3
 
 from .setup_database import save_note_to_db, load_notes_from_db,setup_database, update_note_in_db, delete_note_from_db, search_notes_by_keyword, filter_notes_by_status
 
@@ -156,7 +156,7 @@ def menu():
 
     try:
         note_list = load_notes_from_db('notes.db') #вызываем функцию для загрузки заметок
-    except FileNotFoundError:
+    except sqlite3.OperationalError:
         print('Файл notes.db не найден. Создан новый файл.')
         setup_database('notes.db')
         note_list = []
